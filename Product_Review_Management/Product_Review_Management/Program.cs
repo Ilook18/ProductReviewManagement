@@ -30,7 +30,7 @@ namespace Product_Review_Management
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Enter your Choice Number to Execute the Program Press- 1-DisplayData 2-Retrive Data,3-Retrieve using Product id,4-Count,5-Productid and Review, 6-Exit");
+                Console.WriteLine("Enter your Choice Number to Execute the Program Press- 1-DisplayData 2-Retrive Data,3-Retrieve using Product id,4-Count,5-Productid and Review,6-Skip Records, 7-Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -50,10 +50,14 @@ namespace Product_Review_Management
                     case 5:
                         Management.SelectProductidAndReview(list);
                         break;
-                     case 6:
+                    case 6:
+                        Management.SkipTopFiveRecords(list);
+                        break;
+                    case 7:
                         flag = false;
                         break;
-                   
+                    
+                    
                 }
             }
 

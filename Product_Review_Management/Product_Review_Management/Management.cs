@@ -8,7 +8,7 @@ namespace Product_Review_Management
 {
    public class Management
     {
-        
+       
         public static void Display(List<Product_Review> list)
         {
             foreach (Product_Review product in list)
@@ -53,7 +53,14 @@ namespace Product_Review_Management
                 Console.WriteLine("Productid" + item.productid + " " + "Review" + item.Review);
             }
         }
-       
-    }
+        public static void SkipTopFiveRecords(List<Product_Review> list)
+        {
+            var records = (from product in list orderby product.rating descending select product).Skip(5);
+            foreach (Product_Review product in records)
+            {
+                Console.WriteLine("Productid" + product.productid + " " + "Userid" + product.userid + " " + "Ratings" + product.rating + " " + "Reviews" + product.review + " " + "isLike" + product.isLike);
+            }
+        }
+     }
   }
 }
