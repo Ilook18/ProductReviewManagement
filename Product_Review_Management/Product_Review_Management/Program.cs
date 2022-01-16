@@ -21,11 +21,16 @@ namespace Product_Review_Management
                 new Product_Review() { productid = 8, userid = 8, rating = 4, review = "Good", isLike = true },
                 new Product_Review() { productid = 9, userid = 9, rating = 5, review = "Best", isLike = true },
                 new Product_Review() { productid = 10, userid = 10, rating =2, review = "Bad", isLike = false },
-                };
+                new Product_Review() { productid = 10, userid = 10, rating =4, review = "Good", isLike = true },
+                new Product_Review() { productid = 10, userid = 10, rating =5, review = "Best", isLike = true },
+                new Product_Review() { productid = 10, userid = 10, rating =3, review = "Nice", isLike = true },
+                new Product_Review() { productid = 10, userid = 10, rating =1, review = "Bad", isLike = false },
+
+            };
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Enter your Choice Number to Execute the Program Press- 1-DisplayData, 2-Exit");
+                Console.WriteLine("Enter your Choice Number to Execute the Program Press- 1-DisplayData, 2-Retrive Data, 3-Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -33,12 +38,13 @@ namespace Product_Review_Management
                         Management.Display(list);
                         break;
                     case 2:
+                        Management.SelectTopRatingRecords(list);
+                        break;
+                    case 3:
                         flag = false;
                         break;
-                   
-                    
+                     }
                 }
-            }
 
         }
     }
