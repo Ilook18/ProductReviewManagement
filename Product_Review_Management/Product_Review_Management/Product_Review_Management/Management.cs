@@ -8,6 +8,7 @@ namespace Product_Review_Management
 {
    public class Management
     {
+        
         public static void Display(List<Product_Review> list)
         {
             foreach (Product_Review product in list)
@@ -17,15 +18,26 @@ namespace Product_Review_Management
             }
         }
 
-        public static void SelectTopRatingRecords(List<Product_Review> list)
+        public static void SelectTopRatingRecords(List<Product_Review> list,out int record)
         {
             var records = (from product in list orderby product.rating descending select product).Take(3);
-
+            
             foreach (Product_Review product in records)
+            {
+               
+                Console.WriteLine("Productid" + product.productid + " " + "Userid" + product.userid + " " + "Ratings" + product.rating + " " + "Reviews" + product.review + " " + "isLike" + product.isLike);
+            }
+            record = 23;
+        }
+        public static void SelectRecordsUsingProductId(List<Product_Review> list)
+        {
+            var racords = (list.Where(r => r.rating > 3 && (r.productid == 1) || (r.productid == 4) || (r.productid == 9))).ToList();
+            foreach (Product_Review product in racords)
             {
                 Console.WriteLine("Productid" + product.productid + " " + "Userid" + product.userid + " " + "Ratings" + product.rating + " " + "Reviews" + product.review + " " + "isLike" + product.isLike);
             }
         }
-        
+       
     }
+  }
 }
