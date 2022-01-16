@@ -45,7 +45,15 @@ namespace Product_Review_Management
                 Console.WriteLine("Productid" + item.productid + " " +"Count"+item.count );
             }
         }
-        
-     }
-   }
+        public static void SelectProductidAndReview(List<Product_Review> list)
+        {
+            var records = list.Select(product => new { productid = product.productid, Review = product.review }).ToList();
+            foreach (var item in records)
+            {
+                Console.WriteLine("Productid" + item.productid + " " + "Review" + item.Review);
+            }
+        }
+       
+    }
+  }
 }
