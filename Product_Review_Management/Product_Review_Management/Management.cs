@@ -61,61 +61,6 @@ namespace Product_Review_Management
                 Console.WriteLine("Productid" + product.productid + " " + "Userid" + product.userid + " " + "Ratings" + product.rating + " " + "Reviews" + product.review + " " + "isLike" + product.isLike);
             }
         }
-        public void ProductReviewDataTable(List<Product_Review> list)
-        {
-            dataTable.Columns.Add("Productid").DataType = typeof(Int32);
-            dataTable.Columns.Add("Userid").DataType = typeof(Int32);
-            dataTable.Columns.Add("Ratings").DataType=typeof(int);
-            dataTable.Columns.Add("Review");
-            dataTable.Columns.Add("isLike").DataType = typeof(bool);
-            foreach(var item in list)
-            {
-                dataTable.Rows.Add(item.productid, item.userid, item.rating, item.review, item.isLike);
-            }
-            var productTable = from products in dataTable.AsEnumerable() select products;
-            foreach(DataRow product in productTable)
-            {
-                Console.WriteLine(product.Field<int>("Productid") + " " + product.Field<int>("Userid") + " " + product.Field<int>("Ratings") + " " + product.Field<string>("Review") + " " + product.Field<bool>("isLike"));
-            }
-        }
-        public void RetrieveRecordsFromDataTable()
-        {
-            var productTable = from products in this.dataTable.AsEnumerable()
-                               where products.Field<bool>("isLike").Equals(true)
-                               select products;
-            foreach (DataRow product in productTable)
-            {
-                Console.WriteLine(product.Field<int>("Productid") + " " + product.Field<int>("Userid") + " " + product.Field<int>("Ratings") + " " + product.Field<string>("Review") + " " + product.Field<bool>("isLike"));
-            }
-        }
-        public void AveragePerProductId(List<Product_Review> list)
-        {
-            var records = list.GroupBy(x => x.productid).Select(x => new { productid = x.Key, AverageRating = x.Average(x => x.rating) });
-            foreach(var product in records)
-            {
-                Console.WriteLine(product.productid + " " + product.AverageRating);
-            }
-        }
-        public void RetrieveReviewMessage(List<Product_Review> list,string reviewMessage)
-        {
-            var records = from product in list where product.review.Contains(reviewMessage) select product;
-            foreach (var product in records)
-            {
-                Console.WriteLine("Productid" + " " + product.productid + " " + "Userid" + " " + product.userid + " " + "Ratings" + " " + product.rating + " " + "Reviews" + " " + product.review + " " + "isLike" + " " + product.isLike);
-            }
-        }
-        public void RetriveUserId()
-        {
-            var productTable = from products in this.dataTable.AsEnumerable()
-                               where products.Field<int>("Userid") == 10
-                               orderby products.Field<int>("Ratings") descending
-                               select products;
-            foreach (DataRow product in productTable)
-            {
-                Console.WriteLine(product.Field<int>("Productid") + " " + product.Field<int>("Userid") + " " + product.Field<int>("Ratings") + " " + product.Field<string>("Review") + " " + product.Field<bool>("isLike"));
-            }
-           
-
-        }
+      }
     }
 }
