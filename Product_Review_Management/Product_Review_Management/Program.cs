@@ -30,7 +30,7 @@ namespace Product_Review_Management
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Enter your Choice Number to Execute the Program Press- 1-DisplayData 2-Retrive Data,3-Retrieve using Product id,4-Count,5-Productid and Review,6-Skip Records,7-Productid and Review,8-DataTable,9-Retrieve from dataTable,10-AverageRating,11-Retrieve Review Message,12-Exit");
+                Console.WriteLine("Enter your Choice Number to Execute the Program Press- 1-DisplayData 2-Retrive Data,3-Retrieve using Product id,4-Count,5-Productid and Review,6-Skip Records,7-Productid and Review,8-DataTable,9-Retrieve from dataTable,10-AverageRating,11-Retrieve Review Message,12-Retrieve Userid 13-Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -57,7 +57,7 @@ namespace Product_Review_Management
                         Management.SelectProductidAndReview(list);
                         break;
                     case 8:
-                        operation.ProductReviewDataTable(list);
+                        operation.RetrieveRecordsFromDataTable();
                         break;
                     case 9:
                         operation.RetrieveRecordsFromDataTable();
@@ -69,6 +69,9 @@ namespace Product_Review_Management
                         operation.RetrieveReviewMessage(list, "Nice");
                         break;
                     case 12:
+                        operation.RetriveUserId();
+                        break;
+                    case 13:
                         flag = false;
                         break;
                 }

@@ -104,6 +104,18 @@ namespace Product_Review_Management
                 Console.WriteLine("Productid" + " " + product.productid + " " + "Userid" + " " + product.userid + " " + "Ratings" + " " + product.rating + " " + "Reviews" + " " + product.review + " " + "isLike" + " " + product.isLike);
             }
         }
-      }
+        public void RetriveUserId()
+        {
+            var productTable = from products in this.dataTable.AsEnumerable()
+                               where products.Field<int>("Userid") == 10
+                               orderby products.Field<int>("Ratings") descending
+                               select products;
+            foreach (DataRow product in productTable)
+            {
+                Console.WriteLine(product.Field<int>("Productid") + " " + product.Field<int>("Userid") + " " + product.Field<int>("Ratings") + " " + product.Field<string>("Review") + " " + product.Field<bool>("isLike"));
+            }
+           
+
+        }
     }
 }
