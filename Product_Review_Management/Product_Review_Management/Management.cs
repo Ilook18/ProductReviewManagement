@@ -96,6 +96,14 @@ namespace Product_Review_Management
                 Console.WriteLine(product.productid + " " + product.AverageRating);
             }
         }
+        public void RetrieveReviewMessage(List<Product_Review> list,string reviewMessage)
+        {
+            var records = from product in list where product.review.Contains(reviewMessage) select product;
+            foreach (var product in records)
+            {
+                Console.WriteLine("Productid" + " " + product.productid + " " + "Userid" + " " + product.userid + " " + "Ratings" + " " + product.rating + " " + "Reviews" + " " + product.review + " " + "isLike" + " " + product.isLike);
+            }
+        }
       }
     }
 }

@@ -30,7 +30,7 @@ namespace Product_Review_Management
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Enter your Choice Number to Execute the Program Press- 1-DisplayData 2-Retrive Data,3-Retrieve using Product id,4-Count,5-Productid and Review,6-Skip Records,7-Productid and Review,8-DataTable,9-Retrieve from dataTable,10-AverageRating,11-Exit");
+                Console.WriteLine("Enter your Choice Number to Execute the Program Press- 1-DisplayData 2-Retrive Data,3-Retrieve using Product id,4-Count,5-Productid and Review,6-Skip Records,7-Productid and Review,8-DataTable,9-Retrieve from dataTable,10-AverageRating,11-Retrieve Review Message,12-Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -65,10 +65,12 @@ namespace Product_Review_Management
                     case 10:
                         operation.AveragePerProductId(list);
                         break;
-                     case 11:
+                    case 11:
+                        operation.RetrieveReviewMessage(list, "Nice");
+                        break;
+                    case 12:
                         flag = false;
                         break;
-                   
                 }
             }
 
