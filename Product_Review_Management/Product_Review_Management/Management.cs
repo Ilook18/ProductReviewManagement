@@ -88,6 +88,14 @@ namespace Product_Review_Management
                 Console.WriteLine(product.Field<int>("Productid") + " " + product.Field<int>("Userid") + " " + product.Field<int>("Ratings") + " " + product.Field<string>("Review") + " " + product.Field<bool>("isLike"));
             }
         }
+        public void AveragePerProductId(List<Product_Review> list)
+        {
+            var records = list.GroupBy(x => x.productid).Select(x => new { productid = x.Key, AverageRating = x.Average(x => x.rating) });
+            foreach(var product in records)
+            {
+                Console.WriteLine(product.productid + " " + product.AverageRating);
+            }
+        }
       }
     }
 }
